@@ -5,3 +5,31 @@
 Рядом со стаканом лежали очки дяди Юлиуса и кулек с карамельками. Малыш взял кулек и сунул его в карман пижамы, чтобы отдать Карлсону.
 Дяде Юлиусу было ни к чему его видеть, а то начнет еще допытываться, как он сюда попал.
 ```
+# Описание модели
+## Классы
+Имеется _класс_ **Environment** (окружающая среда), отвечающий за воспроизведение звуков и смену времени суток   
+Ключевым является абстрактный класс **Essence** (Сущность), от которого наследуются _классы_ **Thing** (неодушевленная сущность) и **Person** (человек, одушевленная сущность)
+
+**Thing** - наследуемый _класс_, описывающий вещь, имплементирует интерфейс **Layable** (способный лежать), от этого _класса_ наследуется _класс_ **CandyBag** (мешок с конфетами)  
+**CandyBag** - наследуемый _класс_, описывающий мешок конфет, содержащий массив этих конфет  
+**Candy** - _перечисление_ возможных конфет (Ротфронт, Кремка, Чупачупс)  
+**Person** - наследумый _класс_, описывающий человека, от него наследуются final классы **Julius** (Дядя Юлиус) и **Kid** (Малыш)  
+**Julius** - наследуемый final _класс_, имплементирующий _интерфейс_ **Sleepable** (способный спать)  
+**Kid** - наследуемый final _класс_, имплементирующий _интерфейсы_ **Seeable**, **Droppable**, **Takeable** (Способный увидеть, опустить, взять), имеет _поле_ pocket (карман), содержащий одну вещь (**Thing**), которая сейчас в кармане  
+
+**Takeable** - _интерфейс_ с методом take (взять), содержащий аргументы thing (вещь) и reason (причина), где reason - опциональный аргумент  
+
+## Методы
+**Environment** : changeTime(DayTime time), sound(String sound, Thing... thing), getDayTime()    
+**Essence**: toString(), hashCode(), equals(Object obj), getName()    
+**Thing** : lay(), toString(), hashCode(), equals(Object obj)    
+**CandyBag** : toString(), hashCode(), equals(Object obj)    
+**Candy** : toString()  
+**Person** : toString(), hashCode(), equals(Object obj)  
+**Julius** : sleep(), toString(), hashCode(), equals(Object obj)    
+**Kid** : drop(Thing obj1, Thing obj2), take(Thing thing, String... reason), see(Essence essence), getPocket(), toString(), hashCode(), equals(Object obj)  
+
+# Вывод программы  
+
+![image](https://github.com/nikzarch/lab3/assets/153365178/e1ad97aa-1b6d-4f8c-83c7-b4f25cac57be)
+
