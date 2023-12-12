@@ -26,7 +26,7 @@
 **Takeable** - _интерфейс_ с методом take (взять), содержащий аргументы thing (вещь) и reason (причина), где reason - опциональный аргумент  
 
 ## Методы
-**Environment** : void changeTime(DayTime time),  void sound(String sound, Thing... thing), void getDayTime()    
+**Environment** : void changeTime(DayTime time),  void sound(String sound, Thing thing), void getDayTime()    
 ABSTRACT **Essence**: String getName(), String toString(), int hashCode(), boolean equals(Object obj)    
 **Thing** :void contain(Thing thing), void getContent(), void lay(), String toString(), int hashCode(), boolean equals(Object obj)    
 **CandyBag** : void getContents(), String toString(), int hashCode(), boolean equals(Object obj)    
@@ -34,7 +34,7 @@ ENUM **Candy** :  String toString()
 **Person** : void sleep(), void wakeup(), Condition getCondition(), String toString(), int hashCode(), boolean equals(Object obj)  
 ENUM **Condition** : String toString()
 **Julius** : String toString(), int hashCode(), boolean equals(Object obj)    
-**Kid** :  void drop(Thing obj1, Thing obj2), void take(Thing thing, String... reason), void see(Essence essence), Thing getPocket(), String toString(), int hashCode(), boolean equals(Object obj)  
+**Kid** :  void drop(Thing obj1, Thing obj2), void take(Thing thing, String reason), void see(Essence essence), Thing getPocket(), String toString(), int hashCode(), boolean equals(Object obj)  
 
 # Вывод программы  
 
