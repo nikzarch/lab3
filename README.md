@@ -19,8 +19,8 @@
 **Thing** - наследуемый _класс_, описывающий вещь, имплементирует интерфейс **Layable** (способный лежать), от этого _класса_ наследуется _класс_ **CandyBag** (мешок с конфетами)  
 **CandyBag** - наследуемый _класс_, описывающий мешок конфет, содержащий массив этих конфет  
 **Candy** - _перечисление_ возможных конфет (Ротфронт, Кремка, Чупачупс)  
-**Person** - наследумый _класс_, имплементирующий _интерфейс_ **Sleepable** (способный спать), описывающий человека, от него наследуются final классы **Julius** (Дядя Юлиус) и **Kid** (Малыш)  
-**Julius** - наследуемый final _класс_  
+**Person** - наследумый _класс_, описывающий человека, от него наследуются final классы **Julius** (Дядя Юлиус) и **Kid** (Малыш)  
+**Julius** - наследуемый final _класс_, имплементирующий _интерфейс_ **Sleepable** (способный спать)  
 **Kid** - наследуемый final _класс_, имплементирующий _интерфейсы_ **Seeable**, **Droppable**, **Takeable** (Способный увидеть, опустить, взять), имеет _поле_ pocket (карман), содержащий одну вещь (**Thing**), которая сейчас в кармане  
 
 **Takeable** - _интерфейс_ с методом take (взять), содержащий аргументы thing (вещь) и reason (причина), где reason - опциональный аргумент  
@@ -31,9 +31,9 @@ ABSTRACT **Essence**: String getName(), String toString(), int hashCode(), boole
 **Thing** :void contain(Thing thing), void getContent(), void lay(), String toString(), int hashCode(), boolean equals(Object obj)    
 **CandyBag** : void getContents(), String toString(), int hashCode(), boolean equals(Object obj)    
 ENUM **Candy** :  String toString()  
-**Person** : void sleep(), void wakeup(), Condition getCondition(), String toString(), int hashCode(), boolean equals(Object obj)  
+**Person** :  Condition getCondition(), String toString(), int hashCode(), boolean equals(Object obj)  
 ENUM **Condition** : String toString()
-**Julius** : String toString(), int hashCode(), boolean equals(Object obj)    
+**Julius** : void sleep(), void wakeup(), String toString(), int hashCode(), boolean equals(Object obj)    
 **Kid** :  void drop(Thing obj1, Thing obj2), void take(Thing thing, String reason), void see(Essence essence), Thing getPocket(), String toString(), int hashCode(), boolean equals(Object obj)  
 
 # Вывод программы  
