@@ -1,4 +1,3 @@
-package lab3;
 
 import lab3.characters.Julius;
 import lab3.characters.Kid;
