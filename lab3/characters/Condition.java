@@ -1,4 +1,4 @@
-package lab3.characters;
+package characters;
 
 public enum Condition {
 

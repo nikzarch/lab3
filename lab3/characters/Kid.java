@@ -1,68 +1,76 @@
-package lab3.characters;
+package characters;
 
-import lab3.environment.Container;
-import lab3.environment.Essence;
-import lab3.environment.Thing;
-import lab3.interfaces.Droppable;
-import lab3.interfaces.Seeable;
-import lab3.interfaces.Takeable;
+import environment.Essence;
+import environment.Thing;
+import environment.Container;
+import interfaces.CanPut;
+import interfaces.Seeable;
+import interfaces.Takeable;
 
-public final class Kid extends Person implements Seeable, Takeable, Droppable {
-    private final Container pocket;
+public final class Kid extends Person implements Seeable, Takeable, CanPut {
+    private Container pocket;
 
     public Kid() {
         super("Малыш");
-        this.pocket = new Container("Карман", 1);
-    }
-
-    @Override
-    public void drop(Thing obj1, Thing obj2) {
-        obj2.contain(obj1);
-        System.out.println(this.getName() + " опустил " + obj1.toString() + " в " + obj2);
+        this.pocket = new Container("Карман");
     }
 
     @Override
     public void take(Thing thing) {
-        this.pocket.add(thing);
-        System.out.println(this.getName() + " взял " + thing.getName());
+        if (this.pocket.getContent() == Container.nothing) {
+            this.pocket.add(thing);
+            System.out.println(this.getName() + " взял " + thing.getName());
+        }else{
+            System.out.println("Карман занят");
+        }
     }
 
     public void take(Thing thing, String reason) {
-        this.pocket = thing;
-        System.out.println(this.getName() + " взял " + thing.getName() + " " + reason);
+        if (this.pocket.getContent() == Container.nothing) {
+            System.out.println(this.getName() + " взял " + thing.getName() + " " + reason);
+            this.pocket.add(thing);
+        }else{
+            System.out.println("Карман занят");
+        }
+
+    }
+    public void drop(){
+        this.pocket.remove();
     }
 
+    public void put(Container container){
+        container.add(this.pocket.getContent());
+        System.out.println(this.name + " положил " + this.pocket.getContent().getName() + " в " + container.getName());
+        this.pocket.remove();
+    }
     @Override
     public void see(Essence essence) {
-        System.out.println(this.getName() + " увидел " + essence.getName());
+        System.out.println(this.name + " увидел " + essence.getName());
     }
 
+    public Container getPocket(){
+        return this.pocket;
+    }
     @Override
     public String toString() {
-        return this.getName();
+        return this.name;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode() + this.getName().hashCode();
+        return super.hashCode() + this.name.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this.hashCode() != obj.hashCode() || !(obj instanceof Kid)) {
+        if (this.hashCode() != obj.hashCode() || !(obj instanceof Kid)){
             return false;
         }
-        if (this == obj) {
+        if (this == obj){
             return true;
         }
-        obj = obj;
-        if (this.name == obj.getName() && this.pocket.equals(obj.pocket)) {
-            return true;
-        }
-    }
-
-    public Container getPocket() {
-        return this.pocket;
+        Kid kid = (Kid) obj;
+        return this.name == kid.getName() && this.pocket.getContent() == kid.getPocket().getContent();
     }
 
 }

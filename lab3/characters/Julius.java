@@ -1,6 +1,9 @@
-package lab3.characters;
+package characters;
 
-public final class Julius extends Person {
+import environment.Thing;
+import interfaces.Sleepable;
+
+public final class Julius extends Person  {
     public Julius() {
         super("Дядя Юлиус");
     }
@@ -17,15 +20,13 @@ public final class Julius extends Person {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.hashCode() != obj.hashCode() || !(obj instanceof Person)) {
+        if (this.hashCode() != obj.hashCode() || !(obj instanceof Julius)) {
             return false;
         }
         if (this == obj) {
             return true;
         }
-        obj = obj;
-        if (this.name == obj.getName() && this.cond == obj.getCondition()) {
-            return true;
-        }
+        Julius julius = (Julius) obj;
+        return this.name == julius.getName() && this.cond == julius.getCondition();
     }
 }

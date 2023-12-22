@@ -1,7 +1,7 @@
-package lab3.characters;
+package characters;
 
-import lab3.environment.Essence;
-import lab3.interfaces.Sleepable;
+import environment.Essence;
+import interfaces.Sleepable;
 
 public class Person extends Essence implements Sleepable {
     protected Condition cond;
@@ -11,28 +11,20 @@ public class Person extends Essence implements Sleepable {
         this.cond = Condition.AWAKEN;
     }
 
-    public Condition getCondition() {
-        return this.cond;
-    }
-
     @Override
     public void sleep() {
-        if (this.cond == Condition.AWAKEN) {
-            this.cond = Condition.SLEEPING;
-            System.out.println(this.getName() + " засыпает");
-        } else {
-            System.out.println(this.getName() + " итак спит");
-        }
+        this.cond = Condition.SLEEPING;
+        System.out.println(this.getName() + " спит");
     }
 
     @Override
     public void wakeup() {
-        if (this.cond == Condition.SLEEPING) {
-            this.cond = Condition.AWAKEN;
-            System.out.println(this.getName() + " проснулся");
-        } else {
-            System.out.println(this.getName() + " итак не спит");
-        }
+        this.cond = Condition.AWAKEN;
+        System.out.println(this.getName() + " проснулся");
+    }
+
+    public Condition getCondition() {
+        return this.cond;
     }
 
     @Override
@@ -47,15 +39,13 @@ public class Person extends Essence implements Sleepable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this.hashCode() != obj.hashCode() || !(obj instanceof Person)) {
+        if (this.hashCode() != obj.hashCode() || !(obj instanceof Person)){
             return false;
         }
-        if (this == obj) {
+        if (this == obj){
             return true;
         }
-        obj = obj;
-        if (this.name == obj.getName() && this.cond == obj.getCondition()) {
-            return true;
-        }
+        Person person = (Person) obj;
+        return this.name == person.getName();
     }
 }
