@@ -20,7 +20,6 @@ public class Thing extends Essence implements Layable {
     }
     @Override
     public void lay() {
-        System.out.println(this.place != null);
         if (this.place != null) {
             System.out.println(this.getName() + " лежит в " + this.place.getName());
         }else{
