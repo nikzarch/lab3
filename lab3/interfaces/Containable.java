@@ -2,6 +2,6 @@ package lab3.interfaces;
 
 import lab3.environment.Thing;
 
-public interface Takeable {
-    void take(Thing thing);
+public interface Containable {
+    void add(Thing thing);
 }
