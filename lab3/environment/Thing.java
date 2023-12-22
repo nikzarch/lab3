@@ -1,43 +1,52 @@
-package lab3.environment;
+package environment;
 
-import lab3.environment.Essence;
-import lab3.interfaces.Containable;
-import lab3.interfaces.Layable;
+import interfaces.Layable;
 
 public class Thing extends Essence implements Layable {
-	// реализовать отдельный класс контейнер с соответствующими методами	
+    protected Environment place;
     public Thing(String name) {
         super(name);
     }
+    public Thing(String name, Environment place) {
+        super(name);
+        this.place = place;
+    }
 
+    public void setPlace(Environment place){
+        this.place = place;
+    }
+    public Environment getPlace(Environment place){
+        return this.place;
+    }
     @Override
     public void lay() {
-		// добавить рядом
-        System.out.println(this.getName() + " лежит");
+        System.out.println(this.place != null);
+        if (this.place != null) {
+            System.out.println(this.getName() + " лежит в " + this.place.getName());
+        }else{
+            System.out.println(this.getName() + " лежит " );
+        }
     }
 
     @Override
     public String toString() {
-        return this.name;
+        return this.getName();
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode() + this.name.hashCode();
+        return super.hashCode() + this.getName().hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this.hashCode() != obj.hashCode() || !(obj instanceof Thing)){
+        if (this.hashCode() != obj.hashCode() || !(obj instanceof Thing)) {
             return false;
         }
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
-        if (this.name == obj.getName()) {
-            return true;
-        }
+        Thing thing = (Thing) obj;
+        return this.name == thing.getName();
     }
-	
-    
 }

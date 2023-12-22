@@ -1,4 +1,4 @@
-package lab3.environment;
+package environment;
 
 public abstract class Essence {
     protected String name;
@@ -19,16 +19,14 @@ public abstract class Essence {
 
     @Override
     public boolean equals(Object obj) {
-		if (this.hashCode() != obj.hashCode() || !(obj instanceof Essence)){
+        if (this.hashCode() != obj.hashCode() || !(obj instanceof Essence)) {
             return false;
         }
-        if (this == obj){
+        if (this == obj) {
             return true;
         }
-		obj = (Essence) obj;
-        if (this.name == obj.getName()) {
-            return true;
-        }
+        Essence essence = (Essence) obj;
+        return this.name == essence.getName();
     }
 
     public String getName() {
