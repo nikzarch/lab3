@@ -1,4 +1,4 @@
-package lab3.interfaces;
+package interfaces;
 
 public interface Sleepable {
     void sleep();
