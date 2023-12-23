@@ -15,7 +15,7 @@ public class Environment {
         System.out.println("В " + this.name + " звучал " + sound);
     }
 
-    public void getDayTime() {
+    public void printDayTime() {
         System.out.println(this.daytime.toString());
     }
 
