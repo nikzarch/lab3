@@ -44,6 +44,10 @@ public class Container extends Thing implements Containable {
         return this.content;
     }
     @Override
+    public String toString(){
+        return this.name + " с содержимым: " + this.content.getName();
+    }
+    @Override
     public boolean equals(Object obj) {
         if (this.hashCode() != obj.hashCode() || !(obj instanceof Container )) {
             return false;
