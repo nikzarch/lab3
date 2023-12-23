@@ -2,15 +2,38 @@ package environment;
 
 public class CandyBag extends Thing {
     private final Candy[] content;
-
-    public CandyBag(String name, Candy[] candies) {
+	private int size;
+	
+    public CandyBag(String name, Candy[] candies, int size) {
         super(name);
-        this.content = candies;
+		this.content = new Candy[size];
+		
+		for (int i = 0; i < size; i++){
+			
+			this.content[i] = candies[i];
+		}
+		if (candies.length > size){
+			System.out.print("Не влезли конфеты : ");
+			for (int i = size; i < candies.length; i++){
+				System.out.print(candies[i].toString());
+			}
+            System.out.println();
+		}
     }
 
-    public CandyBag(String name, Candy[] candies, Environment place) {
+    public CandyBag(String name, Candy[] candies, int size, Environment place) {
         super(name, place);
-        this.content = candies;
+		this.content = new Candy[size];
+        for (int i = 0; i < size; i++){
+			this.content[i] = candies[i];
+		}
+		if (candies.length > size){
+			System.out.print("Не влезли конфеты : ");
+			for (int i = size; i < candies.length; i++){
+				System.out.print(candies[i].toString());
+			}
+            System.out.println();
+		}
     }
 
     public Thing takeCandy(int index) {

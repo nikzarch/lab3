@@ -2,6 +2,8 @@ package environment;
 
 import interfaces.Layable;
 
+import java.util.Objects;
+
 public class Thing extends Essence implements Layable {
     protected Environment place;
     public Thing(String name) {
@@ -28,9 +30,9 @@ public class Thing extends Essence implements Layable {
     }
 
     @Override
-    public String toString() {
-        return this.getName();
-    }
+	public String toString(){
+		return this.name + " в месте " + this.place.getName();
+	}
 
     @Override
     public int hashCode() {
@@ -46,6 +48,6 @@ public class Thing extends Essence implements Layable {
             return true;
         }
         Thing thing = (Thing) obj;
-        return this.name == thing.getName();
+        return Objects.equals(this.name, thing.getName());
     }
 }

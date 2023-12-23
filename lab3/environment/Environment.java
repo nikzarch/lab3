@@ -1,8 +1,11 @@
 package environment;
 
+import java.util.Objects;
+
 public class Environment {
     private String name;
     private DayTime daytime;
+	private String lastsound;
     public Environment(String name){
         this.name = name;
     }
@@ -10,21 +13,23 @@ public class Environment {
         System.out.println(time.toString());
         this.daytime = time;
     }
-
+    public DayTime getDayTime(){
+        return this.daytime;
+    }
     public void sound(String sound) {
         System.out.println("В " + this.name + " звучал " + sound);
+		this.lastsound = sound;
     }
-
-    public void printDayTime() {
-        System.out.println(this.daytime.toString());
-    }
+	public String getLastSound(){
+		return this.lastsound;
+	}
 
     public String getName(){
         return this.name;
     }
     @Override
     public String toString(){
-        return this.name;
+        return this.name + ", время: " + this.daytime.toString() + ", последнее что звучало: " + this.lastsound;
     }
 
     @Override
@@ -40,6 +45,6 @@ public class Environment {
             return true;
         }
         Environment environment = (Environment) obj;
-        return this.name == environment.getName();
+        return Objects.equals(this.name, environment.getName()) && Objects.equals(this.daytime, environment.getDayTime()) && Objects.equals(this.lastsound, environment.getLastSound());
     }
 }

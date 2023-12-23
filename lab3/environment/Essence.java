@@ -1,15 +1,11 @@
 package environment;
 
+import java.util.Objects;
+
 public abstract class Essence {
     protected String name;
-
     public Essence(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return this.name;
     }
 
     @Override
@@ -26,7 +22,7 @@ public abstract class Essence {
             return true;
         }
         Essence essence = (Essence) obj;
-        return this.name == essence.getName();
+        return Objects.equals(this.name, essence.getName());
     }
 
     public String getName() {
