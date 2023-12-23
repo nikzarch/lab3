@@ -17,7 +17,7 @@ public class Thing extends Essence implements Layable {
     public void setPlace(Environment place){
         this.place = place;
     }
-    public Environment getPlace(Environment place){
+    public Environment getPlace(){
         return this.place;
     }
     @Override
@@ -48,6 +48,6 @@ public class Thing extends Essence implements Layable {
             return true;
         }
         Thing thing = (Thing) obj;
-        return Objects.equals(this.name, thing.getName());
+        return Objects.equals(this.name, thing.getName()) && Objects.equals(this.place, thing.getPlace());
     }
 }
