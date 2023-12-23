@@ -7,9 +7,11 @@ import interfaces.CanPut;
 import interfaces.Seeable;
 import interfaces.Takeable;
 
+import java.util.Objects;
+
 public final class Kid extends Person implements Seeable, Takeable, CanPut {
     private Container pocket;
-
+	private Essence observed;
     public Kid() {
         super("Малыш");
         this.pocket = new Container("Карман");
@@ -17,7 +19,7 @@ public final class Kid extends Person implements Seeable, Takeable, CanPut {
 
     @Override
     public void take(Thing thing) {
-        if (this.pocket.getContent() == Container.nothing) {
+        if (this.pocket.getContent() == null) {
             this.pocket.add(thing);
             System.out.println(this.getName() + " взял " + thing.getName());
         }else{
@@ -26,7 +28,7 @@ public final class Kid extends Person implements Seeable, Takeable, CanPut {
     }
 
     public void take(Thing thing, String reason) {
-        if (this.pocket.getContent() == Container.nothing) {
+        if (this.pocket.getContent() == null) {
             System.out.println(this.getName() + " взял " + thing.getName() + " " + reason);
             this.pocket.add(thing);
         }else{
@@ -45,16 +47,14 @@ public final class Kid extends Person implements Seeable, Takeable, CanPut {
     }
     @Override
     public void see(Essence essence) {
+		this.observed = essence;
         System.out.println(this.name + " увидел " + essence.getName());
     }
 
     public Container getPocket(){
         return this.pocket;
     }
-    @Override
-    public String toString() {
-        return this.name;
-    }
+
 
     @Override
     public int hashCode() {
@@ -70,7 +70,10 @@ public final class Kid extends Person implements Seeable, Takeable, CanPut {
             return true;
         }
         Kid kid = (Kid) obj;
-        return this.name == kid.getName() && this.pocket.getContent() == kid.getPocket().getContent();
+        return Objects.equals(this.name,kid.getName()) && Objects.equals(this.pocket.getContent(),kid.pocket.getContent()) && Objects.equals(this.cond, kid.getPocket());
     }
-
+    @Override
+    public String toString() {
+        return this.name + " c " + this.pocket.getName() + " в кармане, наблюдащий " + this.observed.getName();
+    }
 }

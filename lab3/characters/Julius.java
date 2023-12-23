@@ -3,6 +3,8 @@ package characters;
 import environment.Thing;
 import interfaces.Sleepable;
 
+import java.util.Objects;
+
 public final class Julius extends Person  {
     public Julius() {
         super("Дядя Юлиус");
@@ -10,7 +12,7 @@ public final class Julius extends Person  {
 
     @Override
     public String toString() {
-        return this.getName();
+        return this.getName() + this.getCondition();
     }
 
     @Override
@@ -27,6 +29,6 @@ public final class Julius extends Person  {
             return true;
         }
         Julius julius = (Julius) obj;
-        return this.name == julius.getName() && this.cond == julius.getCondition();
+        return Objects.equals(this.name, julius.getName()) && Objects.equals(this.cond, julius.getCondition());
     }
 }

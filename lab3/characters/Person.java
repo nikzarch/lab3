@@ -39,6 +39,9 @@ public class Person extends Essence implements Sleepable {
 
     @Override
     public boolean equals(Object obj) {
+		if (obj == null){
+			return false;
+		}
         if (this.hashCode() != obj.hashCode() || !(obj instanceof Person)){
             return false;
         }
