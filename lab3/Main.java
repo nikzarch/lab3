@@ -11,7 +11,7 @@ public class Main {
         Thing jaws = new Thing("Челюсти", bedroom);
         Thing glasses = new Thing("Очки", bedroom);
         Candy[] bag = {Candy.ROTFRONT, Candy.CHUPACHUPS, Candy.KREMKA};
-        CandyBag candyBag = new CandyBag("Кулёк с карамельками", bag, bedroom);
+        CandyBag candyBag = new CandyBag("Кулёк с карамельками", bag, 2, bedroom);
 
         bedroom.sound("грр-пс-пс");
         bedroom.changeTime(DayTime.MORNING);
